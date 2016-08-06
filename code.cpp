@@ -5,8 +5,6 @@
 #include <stdlib.h>
 #include <conio.h>
 
-#define KEY "1"
-
 typedef struct _finddata_t  FILE_SEARCH;
 
 void getFileList(char *path);
@@ -16,7 +14,7 @@ int fileCnt = 0;
 
 int main() {
 
-	char path[100];
+	char path[1024];
 
 	scanf("%s", path);
 	getFileList(path);
@@ -32,13 +30,10 @@ void getFileList(char* path){
 	long h_file;
 	char search_Path[100];
 	char filePath[1024];
-	char buf[1024];
-	char result[1024];
 	char newFilePath[1024];
 
 	FILE_SEARCH file_search;
 
-	strcpy(result, "\0");
 	sprintf_s(search_Path, "%s/*.*", path);
 
 	if ((h_file = _findfirst(search_Path, &file_search)) == -1L) {
